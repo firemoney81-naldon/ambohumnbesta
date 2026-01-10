@@ -1,23 +1,611 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+  <!-- Schema.org FAQ 구조화 데이터 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "암수술비보험이란 무엇인가요? 일반 암 진단금 보험과 다른 점은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "암수술비보험은 암 진단 확정 후 실제로 암 치료를 위한 수술을 받을 때마다 정해진 금액을 지급하는 보험입니다. 일반 암 진단금 보험은 최초 1회 진단 시 지급되는 반면, 수술비 보험은 암의 종류나 수술 횟수에 따라 반복 지급될 수 있어 치료 과정에서 발생하는 재정적 부담을 실질적으로 경감해줍니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "암수술비보험 가입 시 고려해야 할 주요 요소는 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "주요 고려 요소로는 보장 범위(일반암, 소액암, 고액암 등), 면책 기간 및 감액 기간, 재발/전이암에 대한 보장 여부, 갱신형/비갱신형 선택, 그리고 수술 횟수 제한 여부 등이 있습니다. 특히 보험사마다 보장하는 암의 정의와 수술의 범위가 다를 수 있으므로 꼼꼼한 비교가 필요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "2026년 기준으로 암수술비보험 가입 시 비용을 절약할 수 있는 팁이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "비갱신형 상품을 선택하여 장기적으로 보험료 인상을 방지하고, 불필요한 특약(입원비, 통원비 등)을 제외하고 핵심인 수술비 보장만 집중 설계하는 것이 좋습니다. 또한 여러 보험사의 상품을 비교 견적하여 자신에게 맞는 최적의 보험료를 찾는 것이 중요합니다."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "암수술비보험의 면책기간과 감액기간은 무엇인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "면책기간은 보험 가입 후 일정 기간(보통 90일) 동안 암 진단을 받아도 보험금이 지급되지 않는 기간을 말합니다. 감액기간은 면책기간 이후 일정 기간(보통 1년~2년) 동안 보험금이 50%만 지급되는 기간을 말합니다. 이 기간을 정확히 이해하고 가입해야 보험금 지급 시 불이익을 당하지 않습니다."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- 스타일: 부드럽고 다채로운 색, 타이틀 강조, 계층 구조 -->
+  <style>
+    :root {
+      --primary-color: #004D40; /* 짙은 녹색 */
+      --secondary-color: #00796B; /* 청록색 */
+      --accent-color: #80CBC4; /* 연한 청록색 */
+      --highlight-color: #E0F2F1; /* 민트색 계열 하이라이트 */
+      --text-color: #2D3E50; /* 어두운 남색 텍스트 */
+      --bg-light: #F0F4F8; /* 연한 회색 배경 */
+      --bg-white: #ffffff;
+      --btn-color: #FF6F61; /* 주황색 버튼 */
+      --btn-hover: #FF4F3B; /* 짙은 주황색 버튼 */
+    }
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      margin:0; padding:0;
+      background-color: var(--bg-light);
+      color: var(--text-color);
+      line-height:1.7;
+      font-size:16px;
+    }
+    .container {
+      max-width: 1000px;
+      margin:0 auto;
+      padding:0 20px;
+    }
+    header {
+      background-color: var(--primary-color);
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--bg-white);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+      font-weight:700;
+    }
+    header h1 a {
+      color: var(--bg-white);
+      text-decoration: none;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
+      color: var(--bg-white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      font-weight:700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+    .hero p {
+      font-size: 1.4em;
+      margin-bottom: 35px;
+    }
+    .cta-btn {
+      background-color: var(--btn-color);
+      color: var(--bg-white);
+      padding: 18px 45px;
+      font-size:1.3em;
+      font-weight: bold;
+      border:none;
+      border-radius:50px;
+      cursor:pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      margin-top: 20px;
+    }
+    .cta-btn:hover {
+      background-color: var(--btn-hover);
+      transform: translateY(-3px);
+    }
+    .compare-form-box {
+      background-color: var(--bg-white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      text-align: left;
+    }
+    .compare-form-box h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size:2em;
+    }
+    .compare-form-box label {
+      display: block;
+      margin-bottom:8px;
+      font-weight:500;
+      color: var(--text-color);
+    }
+    .compare-form-box input, .compare-form-box select {
+      width:100%;
+      padding:12px;
+      margin-bottom:20px;
+      border:1px solid #ccc;
+      border-radius:6px;
+      box-sizing:border-box;
+    }
+
+    .content-section {
+      margin-top: 40px;
+      background-color: var(--bg-white);
+      padding: 60px 0;
+      border-radius:10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+    .content-section h2 {
+      font-size: 2.8em;
+      color: var(--secondary-color);
+      margin-bottom:30px;
+      font-weight:700;
+      text-align:center;
+    }
+    .content-section h3 {
+      font-size:1.8em;
+      color: var(--primary-color);
+      margin-top:30px;
+      margin-bottom:15px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
+    }
+    .content-section h4 {
+      font-size:1.4em;
+      color: var(--secondary-color);
+      margin-top:20px;
+      margin-bottom:10px;
+      font-weight: 600;
+    }
+    .content-section p {
+      margin-bottom: 15px;
+      line-height: 1.8;
+      font-size: 1.1em;
+    }
+    .feature-grid {
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top:30px;
+    }
+    .feature-grid .item {
+      width: calc(33.33% - 20px);
+      margin:10px;
+      padding:25px;
+      background-color: var(--highlight-color);
+      border-radius:8px;
+      text-align:center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-grid .item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    }
+    .feature-grid .item img {
+      width:80px; height:80px;
+      margin-bottom:15px;
+      border-radius:50%;
+      background-color: var(--primary-color);
+      padding: 10px;
+    }
+    .feature-grid .item h3 {
+      font-size:1.4em;
+      color: var(--primary-color);
+      border:none;
+      padding:0;
+    }
+    .keyword-list {
+      list-style:none;
+      padding:0;
+      display:flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top:30px;
+    }
+    .keyword-list li {
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      padding:10px 20px;
+      margin:5px;
+      border-radius:20px;
+      font-weight:500;
+      transition: background-color 0.3s;
+    }
+    .keyword-list li:hover {
+      background-color: var(--secondary-color);
+      color: var(--bg-white);
+    }
+    .faq-item {
+      border-bottom:1px solid #ddd;
+      padding:20px 0;
+    }
+    .faq-item h3 {
+      cursor:pointer;
+      display:flex;
+      justify-content: space-between;
+      align-items:center;
+      font-size:1.4em;
+      color: var(--primary-color);
+      border:none;
+      padding-left:0;
+    }
+    .faq-item h3::after {
+      content: '+';
+      font-size:1.5em;
+      color: var(--secondary-color);
+      transition: transform 0.3s;
+    }
+    .faq-item.active h3::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      display: none;
+      padding-top:10px;
+      color:#555;
+      font-size:1.1em;
+    }
+    .faq-item.active p {
+      display: block;
+    }
+    footer {
+      background-color: var(--primary-color);
+      color: var(--bg-white);
+      text-align:center;
+      padding: 40px 20px;
+      font-size:0.9em;
+    }
+    footer a {
+      color: var(--bg-white);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer a:hover {
+      text-decoration:underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 1.1em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: var(--highlight-color);
+      color: var(--primary-color);
+      font-weight: bold;
+    }
+    /* 그래프 (막대 그래프) 스타일 */
+    .bar-chart-container {
+      margin: 30px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .bar-chart {
+      width: 100%;
+      height: 200px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .bar-item {
+      height: 100%;
+      width: calc(100% / 5);
+      display: inline-block;
+      text-align: center;
+      vertical-align: bottom;
+    }
+    .bar-label {
+      font-size: 0.9em;
+      color: var(--text-color);
+      margin-top: 5px;
+    }
+    .bar {
+      width: 60%;
+      background-color: var(--secondary-color);
+      border-radius: 5px;
+      margin: 0 auto;
+      transition: height 0.5s ease-out;
+    }
+    .bar-value {
+      color: var(--primary-color);
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width:768px) {
+      .hero h1 { font-size:2.4em; }
+      .hero p { font-size:1.2em; }
+      .cta-btn { padding:15px 30px; font-size:1.1em; }
+      .compare-form-box { padding:25px; }
+      .content-section h2 { font-size:2.2em; }
+      .feature-grid .item { width:100%; margin:10px 0; }
+      .keyword-list li { margin:3px; font-size:0.9em; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="/">암수술비보험 비교센터</a></h1>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>2026년 암수술비보험 순위 및 가입 전략</h1>
+        <p>암 발병률 증가와 높아지는 치료비 부담, 전문가와 함께 내게 맞는 암수술비보험을 찾고 미래를 대비하세요.</p>
+        <div class="compare-form-box">
+          <h2>맞춤형 무료 견적 요청</h2>
+          <p>간단한 정보 입력으로 여러 보험사의 암수술비보험 견적을 한번에 비교해 드립니다.</p>
+          <form action="#" method="post">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+            <label for="phone">연락처</label>
+            <input type="tel" id="phone" name="phone" placeholder="휴대폰 번호를 입력하세요" required>
+            <label for="birthdate">생년월일</label>
+            <input type="text" id="birthdate" name="birthdate" placeholder="예: 19901231" required>
+            <label for="gender">성별</label>
+            <select id="gender" name="gender" required>
+              <option value="">-- 선택 --</option>
+              <option value="male">남성</option>
+              <option value="female">여성</option>
+            </select>
+            <label for="health_status">현재 건강 상태</label>
+            <select id="health_status" name="health_status" required>
+              <option value="">-- 선택 --</option>
+              <option value="good">양호 (최근 5년 이내 입원/수술 없음)</option>
+              <option value="normal">일반 (경증 질환, 통원 치료 이력 있음)</option>
+              <option value="bad">유병자 (암 등 중대 질환 이력 있음)</option>
+            </select>
+            <label for="desired_coverage">희망 보장 금액 (수술 시)</label>
+            <input type="number" id="desired_coverage" name="desired_coverage" placeholder="예: 2000만원" required>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>왜 암수술비보험을 준비해야 할까요?</h2>
+        <p>2026년 현재, 암은 더 이상 불치병이 아닌 만성 질환으로 인식되고 있습니다. 조기 진단 기술의 발전과 치료법의 다양화로 생존율이 크게 높아졌습니다. 하지만 동시에 치료비 부담은 여전히 높습니다. 특히 고가 신약이나 첨단 의료기술이 적용될 경우, 수술비를 포함한 치료 과정에서 발생하는 재정적 압박은 개인과 가정을 위협할 수 있습니다. 암수술비보험은 이러한 상황에서 진단금 외에 실질적인 치료 비용을 보장하여 재정적 안정감을 제공합니다.</p>
+
+        <h3 style="margin-top:50px;">핵심 키워드 분석 및 정보</h3>
+        <ul class="keyword-list">
+          <li>#암수술비보험</li>
+          <li>#암수술비보험추천</li>
+          <li>#암수술비보험순위</li>
+          <li>#암수술비보험가격</li>
+          <li>#암보험비교</li>
+          <li>#암보험저렴한곳</li>
+          <li>#암보험가입팁</li>
+          <li>#암보험장단점</li>
+          <li>#유병자암보험</li>
+          <li>#갱신형비갱신형차이</li>
+          <li>#암수술비보장범위</li>
+          <li>#내돈내산후기</li>
+          <li>#20대암보험</li>
+          <li>#30대암보험</li>
+          <li>#40대암보험</li>
+          <li>#50대암보험</li>
+          <li>#60대암보험</li>
+          <li>#재발암보장</li>
+          <li>#전이암보장</li>
+          <li>#암수술비보험금액</li>
+          <li>#암수술비보험장점</li>
+          <li>#암수술비보험단점</li>
+          <li>#암수술비보험평균</li>
+          <li>#암수술비보험예상금액</li>
+          <li>#암보험가입순위</li>
+          <li>#암보험가입시기</li>
+          <li>#암보험면책기간</li>
+          <li>#암보험감액기간</li>
+          <li>#암보험보장범위</li>
+          <li>#암보험갱신</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>암수술비보험 VS 일반 암진단금보험</h2>
+        <p>많은 분들이 두 보험의 차이점을 궁금해하십니다. '암 진단금'은 암 진단 확정 시 1회에 한해 일시금으로 지급되며, 이후 추가적인 치료 비용은 보장하지 않는 경우가 많습니다. 반면 '암수술비'는 수술 횟수나 종류에 따라 반복 보장이 가능하여, 암이 재발하거나 전이되어 추가 수술이 필요할 때마다 재정적 지원을 받을 수 있다는 큰 장점이 있습니다.</p>
+        <p>특히 2026년 들어서 암 치료 기술이 발전하면서 항암 방사선 치료나 표적 항암제 치료 등 다양한 치료 방법이 등장하고 있지만, 수술은 여전히 암 치료의 핵심입니다. 수술비 보험은 이러한 수술적 치료의 비용 부담을 덜어주는 데 초점을 맞춘 상품입니다.</p>
+
+        <h3>주요 보장 내용 비교</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>구분</th>
+              <th>암 진단금 보험</th>
+              <th>암 수술비 보험</th>
+              <th>적합한 대상</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>보장 시점</td>
+              <td>암 진단 확정 시 1회 지급</td>
+              <td>암 수술 시마다 지급 (반복 지급 가능)</td>
+              <td>진단금으로 모든 치료를 충당하고자 하는 분</td>
+            </tr>
+            <tr>
+              <td>보장 금액</td>
+              <td>계약 금액 일시금 지급</td>
+              <td>수술의 종류(일반암/고액암)에 따라 차등 지급</td>
+              <td>치료 과정 중 발생하는 실질적 비용 부담을 줄이고자 하는 분</td>
+            </tr>
+            <tr>
+              <td>장점</td>
+              <td>사용 목적 제한 없는 일시금 확보 가능</td>
+              <td>재발, 전이암 수술 시에도 보장 가능</td>
+              <td>진단 후 경제 활동 중단 대비</td>
+            </tr>
+            <tr>
+              <td>단점</td>
+              <td>재발 시 추가 보장 어려움</td>
+              <td>수술 외 치료(항암치료 등) 비용은 별도 특약 필요</td>
+              <td>장기적인 치료 과정 대비</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>암수술비보험 가입 시 체크리스트: 장단점 및 주의사항</h2>
+        <p>암수술비보험을 제대로 활용하려면 몇 가지 중요한 포인트를 확인해야 합니다. 단순히 <strong>저렴한곳</strong>이나 <strong>싼곳</strong>을 찾는 것보다는 보장 내용의 깊이를 확인하는 것이 중요합니다. 특히 <strong>내돈내산</strong> <strong>후기</strong>들을 살펴보면 면책 기간이나 감액 기간에 대한 불만이 많습니다.</p>
+
+        <h3>1. 갱신형 vs 비갱신형 차이점 파악</h3>
+        <p><strong>비갱신형</strong>은 가입 시 보험료가 만기까지 일정합니다. 초기 보험료는 높지만 장기적으로 볼 때 <strong>총 납입 금액</strong>이 적어질 가능성이 높습니다. 반면 <strong>갱신형</strong>은 초기 보험료가 저렴하지만 갱신 시점(보통 10년, 20년)마다 보험료가 인상됩니다. <strong>가입</strong> 시 연령이 낮거나, 일시적으로 보험료를 절약하고 싶은 분들에게 유리할 수 있습니다.</p>
+
+        <h3>2. 면책기간 및 감액기간 확인</h3>
+        <p>암보험은 가입 즉시 보장이 시작되지 않습니다. 면책기간은 보통 90일로, 이 기간 내에 암이 진단되면 보험금을 받을 수 없습니다. 감액기간은 면책기간 이후 1~2년 동안 보험금이 50%만 지급되는 기간입니다. 암이 의심되는 상황이라면 가입을 서두르는 것이 좋으며, 늦어도 1년 이상 일찍 준비해야 보장의 사각지대 없이 든든한 보장을 받을 수 있습니다.</p>
+
+        <h3>3. 보장 범위와 재발/전이암 보장 여부</h3>
+        <p>일반적으로 암은 재발과 전이의 위험이 높습니다. 암수술비보험은 최초 1회 수술 외에 재발하거나 전이된 암에 대해서도 수술비를 반복적으로 지급하는지 여부를 반드시 확인해야 합니다. 특히 최근 상품들은 횟수 제한 없이 보장하는 경우가 많으므로 꼼꼼하게 <strong>비교</strong>해봐야 합니다. 또한 소액암(갑상선암, 제자리암 등)과 고액암(췌장암, 폐암 등)의 보장 금액 차이를 확인해야 합니다.</p>
+
+        <h3>4. 유병력자의 경우</h3>
+        <p>병력이나 약 복용 이력이 있어 일반 상품 가입이 어려운 분들을 위한 <strong>유병자 암보험</strong>도 있습니다. 일반 상품보다 보험료는 높지만, 간단한 고지 사항만으로도 가입이 가능하며, <strong>암수술비 보장</strong>을 받을 수 있다는 장점이 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>2026년 암수술비보험 평균 가격 및 예상 금액 분석</h2>
+        <p>2026년 현재 암수술비보험의 <strong>평균 금액</strong>은 가입자의 연령, 성별, 건강 상태, 선택한 보장 금액 및 갱신형/비갱신형 여부에 따라 천차만별입니다. 특히 남성은 40대 후반부터, 여성은 50대 초반부터 보험료가 급격히 상승하는 경향이 있습니다. 다음은 2026년 상반기 기준 <strong>예상 금액</strong>을 바탕으로 한 연령대별 평균 보험료(비갱신형 20년 납, 80세 만기 기준, 수술비 1천만 원 보장) 예시입니다.</p>
+
+        <h3>연령대별 평균 보험료 비교 (예상)</h3>
+        <div class="bar-chart-container">
+          <p class="chart-title" style="text-align: center; font-weight: bold;">월평균 보험료 (단위: 원)</p>
+          <div class="bar-chart">
+            <div class="bar-item">
+              <div class="bar" style="height: 40%; background-color: #00796B;"></div>
+              <p class="bar-label">30대 남성</p>
+            </div>
+            <div class="bar-item">
+              <div class="bar" style="height: 35%; background-color: #80CBC4;"></div>
+              <p class="bar-label">30대 여성</p>
+            </div>
+            <div class="bar-item">
+              <div class="bar" style="height: 70%; background-color: #00796B;"></div>
+              <p class="bar-label">40대 남성</p>
+            </div>
+            <div class="bar-item">
+              <div class="bar" style="height: 65%; background-color: #80CBC4;"></div>
+              <p class="bar-label">40대 여성</p>
+            </div>
+            <div class="bar-item">
+              <div class="bar" style="height: 95%; background-color: #00796B;"></div>
+              <p class="bar-label">50대 남성</p>
+            </div>
+            <div class="bar-item">
+              <div class="bar" style="height: 85%; background-color: #80CBC4;"></div>
+              <p class="bar-label">50대 여성</p>
+            </div>
+          </div>
+          <p style="font-size: 0.9em; margin-top: 10px; text-align: right;">*위 금액은 특정 보험사의 예시이며, 실제 견적과 다를 수 있습니다.</p>
+        </div>
+        <p>그래프에서 볼 수 있듯이, 30대일 때 가입하는 것이 보험료 측면에서 가장 유리합니다. 나이가 들수록 발병 위험률이 높아져 보험료가 상승하므로, <strong>가입 시기</strong>를 늦추지 않는 것이 중요합니다. 특히 여성은 40대 후반, 남성은 50대 초반에 보험료가 크게 오르는 시점이 있어 가입 시점을 신중하게 선택해야 합니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+
+        <div class="faq-item">
+          <h3>암수술비보험과 실손보험의 차이점은 무엇인가요?</h3>
+          <p>실손보험(실비)은 실제 발생한 치료비(입원비, 수술비, 약제비 등)를 보장 한도 내에서 환급해주는 보험입니다. 반면 암수술비보험은 수술이라는 특정 상황이 발생했을 때 정해진 금액을 지급하는 정액 보험입니다. 실손보험은 실제 지출한 비용만큼만 돌려받고, 암수술비보험은 수술 횟수나 종류에 따라 정액을 받기 때문에 두 보험을 함께 가입하면 더 든든한 보장을 받을 수 있습니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>암수술비보험 가입 시 고지해야 하는 사항은 무엇인가요?</h3>
+          <p>보험 계약 시에는 최근 3개월, 1년, 5년 이내의 병력 사항을 정확하게 고지해야 합니다. 암 관련 진단, 수술, 입원, 투약 여부뿐만 아니라 고혈압, 당뇨와 같은 만성질환도 고지 대상입니다. 고지 의무를 위반할 경우 보험금 지급 거절 또는 계약 해지의 사유가 될 수 있으므로 솔직하게 알려야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>암수술비보험을 갱신형으로 선택해도 괜찮은가요?</h3>
+          <p>갱신형은 초기 보험료가 <strong>저렴한곳</strong>을 찾는 분들에게 매력적일 수 있으나, 나중에 보험료 인상 폭이 커질 수 있습니다. 특히 <strong>암수술비</strong> 보험은 만기가 길기 때문에 갱신형을 선택할 경우 노후에 보험료 부담이 가중될 수 있습니다. 갱신형 선택은 보험료 납입 기간 동안 지출할 총 금액을 예상하고 신중하게 결정해야 합니다.</p>
+        </div>
+
+        <div class="faq-item">
+          <h3>암수술비보험 가입 시 2026년 기준으로 가장 주의해야 할 사항은?</h3>
+          <p>2026년 현재 보험사들은 '초기 암'과 '고액암'의 구분을 명확히 하고 있습니다. 과거에는 고액암으로 분류되던 일부 암종이 일반암으로 하향 조정되는 경우도 있습니다. 또한, 재발이나 전이암에 대한 보장 횟수 제한 여부, 수술의 정의(단순 절제술 포함 여부) 등을 꼼꼼히 확인하여 <strong>암수술비보험</strong>의 <strong>장점</strong>을 최대한 활용할 수 있도록 해야 합니다.</p>
+        </div>
+        
+      </div>
+    </section>
+
+    <section class="content-section">
+      <div class="container">
+        <h2>신뢰할 수 있는 외부 자료 및 참고 링크</h2>
+        <p>암수술비보험 가입 시, 보험 상품에 대한 이해뿐만 아니라 실제 암 발병률 및 치료 동향에 대한 정보를 확인하는 것이 중요합니다. 아래는 공인된 기관에서 제공하는 관련 정보들입니다.</p>
+        <ul>
+          <li><a href="https://www.cancer.go.kr/lay1/program/web/gongsi/researchResult.do?menu_id=01030300" target="_blank" rel="noopener">국가암정보센터 (국립암센터) - 국내 암 발생 현황 및 통계</a></li>
+          <li><a href="https://www.fss.or.kr/fss/main/index.do" target="_blank" rel="noopener">금융감독원 (FSS) - 보험 소비자 정보 및 분쟁 조정</a></li>
+          <li><a href="https://www.gov.kr/portal/lawService.do?menuId=2&query=%EC%95%94%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">대한민국 정부 민원포털 - 암 관련 정책 및 지원 정보</a></li>
+          <li><a href="https://ko.wikipedia.org/wiki/%EC%95%94%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">위키백과 - 암보험 정의 및 역사</a></li>
+          <li><a href="https://www.nhis.or.kr/nhis/index.do" target="_blank" rel="noopener">국민건강보험공단 - 건강보험 보장성 강화 정책 및 급여 적용 여부</a></li>
+        </ul>
+        <p>위 자료들은 암 치료와 보험 가입에 대한 객관적이고 신뢰성 있는 정보를 제공합니다.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>암수술비보험 비교센터</strong> &copy; 2026 All Rights Reserved.</p>
+      <p>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">이용약관</a>
+        <a href="#">문의하기</a>
+      </p>
+      <p>본 사이트는 보험 상품 비교 정보를 제공하며, 실제 계약은 선택하신 보험사와 직접 진행됩니다.</p>
+      <p>광고 심의 기준 : XXX-2026-XXXXX (가상 심의번호)</p>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ 토글 기능
+    document.querySelectorAll('.faq-item h3').forEach(item => {
+      item.addEventListener('click', event => {
+        const parent = item.parentElement;
+        parent.classList.toggle('active');
+      });
+    });
+  </script>
+
+
+  
